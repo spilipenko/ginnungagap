@@ -44,7 +44,7 @@ file_fftw=fftw-3.3.4.tar.gz
 
 fi
 
-folder_fftw="${file_fftw%.*}"
+folder_fftw="${file_fftw%.*.*}"
 if [ ! -d $folder_fftw ] && [ $fftw = true ]
 then
 tar -xzf $file_fftw
@@ -54,16 +54,16 @@ fi
 if [ -z $file_hdf5 ] && [ $hdf5 = true ]
 then
 echo
-echo Trying to get http://www.hdfgroup.org/ftp/HDF5/current/src/hdf5-1.8.17.tar.gz...
+echo Trying to get http://www.hdfgroup.org/ftp/HDF5/current/src/hdf5-1.10.1.tar.gz...
 echo If it fails, please, download the latest version yourself!
 echo
 
 
-wget http://www.hdfgroup.org/ftp/HDF5/current/src/hdf5-1.8.17.tar.gz
-file_hdf5=hdf5-1.8.17.tar.gz
+wget http://www.hdfgroup.org/ftp/HDF5/current/src/hdf5-1.10.1.tar.gz
+file_hdf5=hdf5-1.10.1.tar.gz
 fi
 
-folder_hdf5="${file_hdf5%.*}"
+folder_hdf5="${file_hdf5%.*.*}"
 if [ ! -d $folder_hdf5 ] && [ $hdf5 = true ]
 then
 tar -xzf $file_hdf5
@@ -150,7 +150,7 @@ if [ $hdf5 = true ] ; then
 		    --disable-fortran \
 		    --disable-cxx \
 		    --with-pthread \
-		    --enable-production \
+		    --enable-build-mode=production \
 		    --disable-deprecated-symbols \
 		    --enable-parallel
 	make -j
